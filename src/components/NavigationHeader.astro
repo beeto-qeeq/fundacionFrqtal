@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import LogoImage from "@assets/Logo.webp";
 import HamMenu from "@assets/hamMenu.webp";
+import Close from "@assets/close.webp";
 ---
 
 <script>
@@ -10,17 +11,23 @@ import HamMenu from "@assets/hamMenu.webp";
         .getElementById("mobile-header-button")
         ?.addEventListener("click", () => {
             MOBILE_MENU?.classList.toggle("mobile-menu-show");
+            document.getElementById('header-mobile-button-opened')?.classList.toggle('showIconButton');
+            document.getElementById('header-mobile-button-closed')?.classList.toggle('showIconButton');
 
-            const MENU_BUTTONS = document.getElementsByTagName("a");
-            for (let i = 0; i < MENU_BUTTONS.length; i++) {
-                MENU_BUTTONS[i].addEventListener("click", () => {
+            const ALL_NAVIGATION_BUTTONS = document.getElementsByTagName("a");
+            for (let i = 0; i < ALL_NAVIGATION_BUTTONS.length; i++) {
+                ALL_NAVIGATION_BUTTONS[i].addEventListener("click", () => {
                     MOBILE_MENU?.classList.toggle("mobile-menu-show");
+                    document.getElementById('header-mobile-button-opened')?.classList.toggle('showIconButton');
+                    document.getElementById('header-mobile-button-closed')?.classList.toggle('showIconButton');
                 });
             }
         });
     window.addEventListener("resize", () => {
         if (window.innerWidth > 640) {
             MOBILE_MENU?.classList.remove("mobile-menu-show");
+            document.getElementById('header-mobile-button-opened')?.classList.toggle('showIconButton');
+            document.getElementById('header-mobile-button-closed')?.classList.toggle('showIconButton');
         }
     });
 </script>
@@ -42,11 +49,19 @@ import HamMenu from "@assets/hamMenu.webp";
             <p class="header-desk-button">Programas</p>
             <p class="header-desk-button">Blog</p>
             <button id="mobile-header-button"
-                ><Image
-                    class="header-mabile-button"
+                >
+                <Image
+                    id="header-mobile-button-closed"
+                    class='showIconButton'
                     src={HamMenu}
                     alt=""
-                /></button
+                />
+                <Image
+                    id="header-mobile-button-opened"
+                    src={Close}
+                    alt=""
+                />
+            </button
             >
             <a href="/donar"><div class="header-action-button">Donar</div></a>
         </div>
@@ -121,18 +136,24 @@ import HamMenu from "@assets/hamMenu.webp";
         object-fit: contain;
         width: 7rem;
     }
-    .header-mabile-button {
+    #header-mobile-button-opened {
+        display: none;
+        width: 1.2rem;
+        aspect-ratio: 1/1;
+        object-fit: contain;
+    }
+    #header-mobile-button-closed {
         display: none;
         width: 1.3rem;
         aspect-ratio: 1/1;
         object-fit: contain;
     }
+    .showIconButton {
+        display: block !important;
+    }
     @media (max-width: 640px) {
         .header-desk-button {
             display: none;
-        }
-        .header-mabile-button {
-            display: block;
         }
         #mobile-header-button {
             display: block;
