@@ -1,0 +1,116 @@
+---
+import { Image } from "astro:assets";
+import Scale from "@assets/scale.webp";
+import Sustain from "@assets/sustain.webp";
+import Embed from "@assets/embed.webp";
+
+const ABOUT_SUB_TEXTS = [
+	{
+		image: Scale,
+		title: "Escalabilidad",
+		description:
+			"La escalabilidad es fundamental, ya que nos enfocamos en proyectos con el potencial de alcanzar a millones de personas.",
+	},
+	{
+		image: Sustain,
+		title: "Sostenibilidad",
+		description:
+			"Además, nuestra iniciativa se enfoca en proyectos sostenibles que eviten causar un impacto negativo en otras áreas de la humanidad.",
+	},
+	{
+		image: Embed,
+		title: "Integración",
+		description:
+			"Finalmente, todas nuestras iniciativas deben ser integrables, lo que permite que se conecten con otras causas y estén disponibles para cualquiera.",
+	},
+];
+
+---
+<div class="abount-section-wrapper">
+    <div class="abount-section-container">
+        <h2 class="text-gradient">About</h2>
+        <div class="abount-section-description-container">
+            <p>
+                <b class="text-gradient" >Fundación Frqtal</b> es una iniciativa enfocada en
+                desarrollar soluciones innovadoras para los problemas
+                más grandes que enfrenta la civilización.
+            </p>
+            <p>
+                Nuestra iniciativa une a científicos, artistas y marcas
+                líderes con un solo objetivo en mente: generar un
+                impacto positivo y medible en la civilización humana.
+                Nos enfocamos en impulsar iniciativas a mediano y largo
+                plazo, las cuales deben incluir tres elementos
+                esenciales: Escalabilidad, Sostenibilidad e Integración.
+            </p>
+        </div>
+        <div class="about-images-container">
+            {
+                ABOUT_SUB_TEXTS.map((aboutSubTexts) => {
+                    return (
+                        <div>
+                            <Image
+                                class="about-description-image"
+                                src={aboutSubTexts.image}
+                                alt={aboutSubTexts.title}
+                            />
+                            <div class="about-images-texts-container" >
+                                <h5 class:list={["about-images-title", "text-gradient"]}>
+                                    {aboutSubTexts.title}
+                                </h5>
+                                <p class="about-images-description">
+                                    {aboutSubTexts.description}
+                                </p>
+                            </div>
+                        </div>
+                    );
+                })
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+	.about-images-texts-container {
+		display: flex;
+		flex-direction: column;
+		margin-top: 1.7rem;
+		row-gap: 0.5rem;
+	}
+	.about-images-description {
+		font-size: var(--font-size-s);
+	}
+	.about-description-image {
+		height: 7rem;
+		object-fit: contain;
+	}
+	.about-images-container {
+		display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+		margin-top: 1.7rem;
+		column-gap: 1.3rem;
+		row-gap: 2.7rem;
+	}
+	.abount-section-wrapper {
+		padding: 3rem 2.8rem;
+	}
+	.abount-section-container {
+		display: flex;
+		flex-direction: column;
+		row-gap: 0.7rem;
+		border: 0.03125rem solid #70698769;
+		padding: 2rem 1.8rem;
+		border-radius: 0.8rem;
+		background: rgba(0, 0, 0, 0.6);
+		backdrop-filter: blur(1.333rem);
+		-webkit-backdrop-filter: blur(1.333rem);
+		box-shadow:
+			0 8px 16px rgba(0, 0, 0, 0.3),
+			inset 0 0 10px rgba(255, 255, 255, 0.1);
+	}
+	.abount-section-description-container {
+		display: flex;
+		flex-direction: column;
+		row-gap: 0.8rem;
+	}
+</style>

@@ -1,0 +1,162 @@
+---
+import { Image } from "astro:assets";
+import Footer from "@components/Footer.astro";
+import CommonLayout from "@layouts/CommonLayout.astro";
+import NavigationHeaderHeader from "@components/NavigationHeader.astro";
+import AnaKaren from "@assets/anaKaren.webp";
+import AdrianaMent from "@assets/adrianaMent.webp";
+import PepeFunes from "@assets/pepeFunes.webp";
+import LuisMum from "@assets/luisMum.webp";
+import Linkedin from "@assets/linkedin.webp";
+import XLogo from "@assets/xLogo.webp";
+import Instagram from "@assets/instagram.webp";
+
+const TEAM_CARDS = [
+    {
+        name: "Ana Karen Ramírez",
+        description:
+            "CEO & Founder at Epic Queen / MIT Innovator Under 35 / WEB 3.0 Consultant",
+        image: AnaKaren,
+        badge: "Consultora",
+        social: ["instagram", "linkedin", "x"],
+    },
+    {
+        name: "Luis Mumejean",
+        description:
+            "Director de relaciones institucionales, speaker de crypto e inteligencia artificial.",
+        image: LuisMum,
+        badge: "Embajador",
+        social: ["instagram", "linkedin"],
+    },
+    {
+        name: "Adriana Mantilla",
+        description:
+            "Apasionada ambientalista con un profundo amor por los animales, demuestra su compromiso y dedicación hacia la protección del medio ambiente y la vida silvestre en cada una de sus acciones.",
+        image: AdrianaMent,
+        badge: "Embajadora",
+        social: [],
+    },
+    {
+        name: "Pepe Funes",
+        description:
+            "Abogado ambientalista, cancunense y ciudadano del mundo. Darwinista comprometido con la biodiversidad, especialmente la marina.",
+        image: PepeFunes,
+        badge: "Embajador",
+        social: ["x"],
+    },
+];
+
+const SOCIAL_IMAGES = {
+    instagram: Instagram,
+    linkedin: Linkedin,
+    x: XLogo,
+}
+---
+
+<CommonLayout title="Fundación Frqtal - Team">
+    <main>
+        <NavigationHeaderHeader />
+        <div class="cards-team-container">
+            {
+                TEAM_CARDS.map((cardData) => {
+                    return (
+                        <div class="card-container">
+                            <Image
+                                class="card-data-image"
+                                src={cardData.image}
+                                alt={cardData.name.replaceAll(" ", "")}
+                            />
+                            <div class="card-info-container">
+                                <div class="card-top-info-container">
+                                    <h5 class="text-gradient">
+                                        {cardData.name}
+                                    </h5>
+                                    <p class="card-description">
+                                        {cardData.description}
+                                    </p>
+                                </div>
+                                {cardData.social.length > 0 && <div class="card-socials-container">
+                                    {cardData.social.map((cardSocial) => {
+                                        return <div class="card-social" ><Image src={SOCIAL_IMAGES[cardSocial]} alt="" /></div>;
+                                    })}
+                                </div>}
+                            </div>
+                            <div class="card-badge" >
+                                <p>{cardData.badge}</p>
+                            </div>
+                        </div>
+                    );
+                })
+            }
+        </div>
+        <Footer />
+    </main>
+</CommonLayout>
+
+<style>
+    .card-social {
+        background-color: #6633F5;
+        width: 1.7rem;
+        aspect-ratio: 1/1;
+        padding: 0.2rem;
+        border-radius: 0.3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .card-badge {
+        position: absolute;
+        top: 1rem;
+        left: 0.8rem;
+        font-size: var(--font-size-xs);
+        border: 0.0625rem solid rgb(232, 8, 236);
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(1.333rem);
+        -webkit-backdrop-filter: blur(1.333rem);
+        box-shadow:
+            0 8px 16px rgba(0, 0, 0, 0.3),
+            inset 0 0 10px rgba(232, 8, 236, 0.5);
+            border-radius: 9999px;
+        padding: 0.3rem 0.6rem;
+    }
+    .card-top-info-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+    }
+    .card-socials-container {
+        display: flex;
+        margin-top: auto;
+        margin-top: 0.8rem;
+        column-gap: 0.5rem;
+    }
+    .card-description {
+        font-size: var(--font-size-xs);
+    }
+    .card-info-container {
+        padding: 1rem 0.8rem;
+        justify-content: space-between;
+        height: auto;
+    }
+    .card-container {
+        background-color: black;
+        border-radius: 0.8rem;
+        border: 0.03125rem solid #70698769;
+        height: 100%;
+        position: relative;
+    }
+    .card-data-image {
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 0.8rem;
+    }
+    .cards-team-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+        grid-auto-rows: min-content;
+        padding: 3rem 2.8rem;
+        padding-top: 6.8rem;
+        column-gap: 1.3rem;
+        row-gap: 2.7rem;
+    }
+</style>

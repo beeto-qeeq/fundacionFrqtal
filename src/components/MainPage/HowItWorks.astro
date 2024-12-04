@@ -1,0 +1,107 @@
+---
+import { Image } from "astro:assets";
+import FingerPrint from "@assets/fingerPrint.webp";
+import CryptoStake from "@assets/cryptoStake.webp";
+import RadarCharts from "@assets/radarCharts.webp";
+
+const HOW_IT_WORKS_CARDS = [
+    {
+        title: "Dona",
+        description:
+            "Al donar, accedes a una red de empresas y propietarios que creen en la innovación y pertenecen a industrias similares a la tuya.",
+        image: FingerPrint,
+    },
+    {
+        title: "FNFT",
+        description:
+            "Solo con nuestro programa obtienes un FNFT a cambio de tu donación, el cual, cada treinta días, mina el 0.5% del valor de tu donativo.",
+        image: CryptoStake,
+    },
+    {
+        title: "Adquiere",
+        description:
+            "Creemos que toda gran idea puede convertirse en un gran emprendimiento. Con cada idea que apoyas, tu donación puede marcar la diferencia, y tú puedes formar parte de su mesa de accionistas.",
+        image: RadarCharts,
+    },
+];
+---
+
+<div class="how-it-works-wrapper">
+    <div class="how-it-works-container">
+        <h2 class="text-gradient">¿Cómo funciona?</h2>
+        <div class="how-it-works-description-container">
+            <p>
+                Dona y adquiere participación en TOKENS a través de los
+                programas que ofrecemos. Al donar, obtendrás un FNFT, un ticket
+                de donación autorizado y un FNFT que minará esa donación
+                directamente en tu wallet. Con esto, ayudas al ecosistema a
+                generar valor en las industrias donde conectamos grandes ideas.
+            </p>
+        </div>
+
+        <div class="how-it-works-cards-container">
+            {
+                HOW_IT_WORKS_CARDS.map((cardData) => {
+                    return (
+                        <div class="how-it-works-card">
+                            <Image
+                                class="card-image"
+                                src={cardData.image}
+                                alt=""
+                            />
+                            <div class="card-text-container">
+                                <h4 class="text-gradient">{cardData.title}</h4>
+                                <p class="card-description">{cardData.description}</p>
+                            </div>
+                        </div>
+                    );
+                })
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .card-image {
+        width: 100%;
+        aspect-ratio: 1/0.8;
+        border-radius: 0.8rem;
+        object-fit: cover;
+        border: 0.03125rem solid #70698769;
+    }
+    .how-it-works-cards-container {
+        column-gap: 1.3rem;
+        row-gap: 2.7rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        grid-auto-rows: min-content;
+        margin-top: 1.7rem;
+    }
+    .how-it-works-card {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.7rem;
+    }
+    .card-text-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+    }
+    .how-it-works-description-container {
+    }
+    .card-description {
+        font-size: var(--font-size-m);
+    }
+    .how-it-works-wrapper {
+        height: 100%;
+        /* max-height: 100dvh; */
+    }
+    .how-it-works-container {
+        padding: 3rem 2.8rem;
+        /* border: 0.03125rem solid #70698769; */
+        border-radius: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.7rem;
+    }
+</style>

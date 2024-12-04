@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import HeroImage from "@assets/heroImage.webp";
+import NavigationHeader from "@components/NavigationHeader.astro";
+import CommonLayout from "@layouts/CommonLayout.astro";
+import HeroSection from "@components/MainPage/HeroSection.astro";
+import HowItWorks from "@components/MainPage/HowItWorks.astro";
+import Projects from "@components/MainPage/Projects.astro";
+import About from "@components/MainPage/About.astro";
+import How from "@components/MainPage/How.astro";
+import Footer from "@components/Footer.astro";
+---
+
+<CommonLayout title="Fundación Frqtal">
+	<main>
+		<div class="background-image-container">
+			<Image class="background-image" src={HeroImage} alt="" />
+		</div>
+
+		<NavigationHeader />
+
+		<HeroSection />
+		<HowItWorks />
+		<Projects />
+		<About />
+		<How />
+		<Footer />
+		
+	</main>
+</CommonLayout>
+
+<style>
+	.background-image {
+		position: absolute;
+		height: 100dvh;
+		min-width: 100vw;
+		object-fit: cover;
+		z-index: -9999;
+		/* filter: brightness(0.3); */
+	}
+	.background-image-container::after {
+		z-index: -9999;
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(
+			45deg,
+			rgba(0, 0, 0, 1) 16%,
+			rgba(0, 0, 0, 0.9) 48%,
+			rgba(0, 0, 0, 0) 100%
+		);
+		pointer-events: none;
+	}
+
+	.link-card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		gap: 2rem;
+		padding: 0;
+	}
+</style>

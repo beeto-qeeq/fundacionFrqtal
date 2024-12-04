@@ -1,0 +1,111 @@
+---
+import { Image } from "astro:assets";
+import LogoImage from "@assets/Logo.webp";
+---
+
+<footer class="footer-wrapper">
+    <div class="footer-container">
+        <div class="logo-container">
+            <Image
+                class="logo-normal"
+                src={LogoImage}
+                alt="Fundación Frqtal"
+            />
+        </div>
+
+        <div class="footer-menus-container" >
+            <div class="footer-menu" >
+                <h5 class="text-gradient" >Legal</h5>
+                <ul>
+                    <li>Términos y Condiciones</li>
+                    <li>Políticas</li>
+                    <li>Políticas de recaudación</li>
+                    <li>CLUNI donataria autorizada</li>
+                    <li>Reportes anuales</li>
+                    <li>Políticas de fondeo</li>
+                </ul>
+            </div>
+            <div class="footer-menu" >
+                <h5 class="text-gradient" >Fundación</h5>
+                <ul>
+                    <li>Manifesto</li>
+                    <li><a href="/team" >Team</a></li>
+                    <li>Prensa</li>
+                    <li>Historia</li>
+                    <li>Documentación</li>
+                    <li>Alianzas estratégicas</li>
+                </ul>
+            </div>
+            <div class="footer-menu" >
+                <h5 class="text-gradient" >Proyectos</h5>
+                <ul>
+                    <li>Carbon Foundation</li>
+                    <li>Epic Queen</li>
+                    <li>Quazart</li>
+                    <li>Cosmic Mobile</li>
+                    <li>Colonny</li>
+                    <li>Ver Todos →</li>
+                </ul>
+            </div>
+            <div class="footer-menu" >
+                <h5 class="text-gradient" >About</h5>
+                <ul>
+                    <li>Nuestra historia</li>
+                    <li>Datos financieros</li>
+                    <li>Contacto</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+	.footer-menu {
+		display: flex;
+		flex-direction: column;
+		row-gap: 0.7rem;
+	}
+	.footer-menu li {
+		font-size: var(--font-size-s);
+		opacity: 0.8;
+		cursor: pointer;
+	}
+	.footer-menu li:hover {
+		opacity: 1;
+		text-decoration-line: underline;
+	}
+	.footer-menu ul {
+		display: flex;
+		flex-direction: column;
+		row-gap: 0.3rem;
+		width: fit-content;
+	}
+	.footer-menus-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+		row-gap: 2rem;
+		column-gap: 4rem;
+	}
+	.footer-container {
+		padding: 2rem 1.8rem;
+		row-gap: 1.3rem;
+		border-radius: 0.8rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		border: 0.03125rem solid #70698769;
+		background: rgba(0, 0, 0, 0.6);
+		backdrop-filter: blur(1.333rem);
+		-webkit-backdrop-filter: blur(1.333rem);
+		box-shadow:
+			0 8px 16px rgba(0, 0, 0, 0.3),
+			inset 0 0 10px rgba(255, 255, 255, 0.1);
+	}
+	.footer-wrapper {
+		padding: 0.8rem 1rem;
+	}
+	.logo-normal {
+		object-fit: contain;
+		width: 7rem;
+	}
+</style>

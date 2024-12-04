@@ -1,0 +1,213 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/fundacionIcon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			90deg,
+			#ff6ec7,
+			/* Rosa intenso */ #ffd700,
+			/* Amarillo brillante */ #5edcff,
+			/* Azul claro */ #9b59b6 /* Morado elegante */
+		);
+
+		--font-size-h3: 1.75rem;
+		--font-size-xs: 0.875rem;
+		--font-size-s: 0.9375rem;
+		--font-size-base: 1rem;
+		--font-size-m: 1.125rem;
+		--font-size-l: 1.25rem;
+		--font-size-xl: 1.5rem;
+		--font-size-2xl: 2rem;
+		--font-size-3xl: 2.25rem;
+		--font-size-4xl: 3rem;
+		--font-size-5xl: 4rem;
+		--font-weight-bold: 700;
+		--font-weight-semi-bold: 600;
+		--font-weight-normal: 400;
+	}
+
+	html {
+		font-size: 100%; /* Establece un tamaño base para fuentes (16px por defecto) */
+		line-height: 1.5; /* Mejora la legibilidad */
+		scroll-behavior: smooth; /* Desplazamiento suave */
+		-webkit-text-size-adjust: 100%; /* Evita ajustes automáticos en dispositivos móviles */
+		color-scheme: dark; /* Compatible con temas claros y oscuros */
+		/* background-color: #0C0128; */
+		/* background-color: #1A0033; */
+		/* background-color: #130A2A; */
+		/* background-color: #150734; */
+
+		/* background-color: #0d0221; */
+		background-color: #000;
+
+		/* background: linear-gradient(
+			10deg,
+			#1e1b30,
+			#141220
+		); */
+
+		background-image: radial-gradient(#ffffff33 0.06rem, transparent 0.06rem);		
+		background-size: 1.2rem 1.2rem; 
+		background-position: 0rem 0rem;
+
+  /* background-size: 30px 30px; */
+
+
+		/* background-color: #0B001E; */
+	}
+
+	body {
+		margin: 0;
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+			"Helvetica Neue", Arial, sans-serif;
+		text-rendering: optimizeLegibility;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: 0;
+		font-weight: inherit; /* Hereda el peso de fuente del contexto */
+		line-height: 1.2; /* Espaciado entre líneas */
+		color: inherit; /* Hereda el color del contexto */
+	}
+
+	h1 {
+		font-size: var(--font-size-3xl);
+		font-weight: var(--font-weight-bold);
+	}
+
+	h2 {
+		font-size: var(--font-size-2xl);
+		font-weight: var(--font-weight-semi-bold);
+	}
+
+	h3 {
+		font-size: var(--font-size-h3);
+		font-weight: var(--font-weight-semi-bold);
+	}
+
+	h4 {
+		font-size: var(--font-size-xl);
+		font-weight: var(--font-weight-semi-bold);
+	}
+
+	h5 {
+		font-size: var(--font-size-l);
+		font-weight: var(--font-weight-semi-bold);
+	}
+
+	h6 {
+		font-size: var(--font-size-base);
+		font-weight: var(--font-weight-semi-bold);
+		letter-spacing: 0.05em;
+	}
+
+	img,
+	picture,
+	video,
+	canvas,
+	svg {
+		display: block; /* Asegura que sean elementos de bloque */
+		max-width: 100%; /* Responsivo por defecto */
+		height: auto;
+	}
+
+	input,
+	button,
+	textarea,
+	select {
+		font: inherit; /* Hereda tipografía del body */
+	}
+
+	button {
+		all: unset; /* Elimina estilos por defecto */
+		cursor: pointer;
+	}
+
+	a {
+		text-decoration: none;
+		color: inherit; /* Usa el color del contexto */
+		width: fit-content;
+		display: block;
+	}
+
+	ul,
+	ol {
+		list-style: none; /* Elimina los estilos de listas */
+	}
+
+	table {
+		border-collapse: collapse; /* Elimina los espacios entre celdas */
+		width: 100%; /* Hace las tablas más manejables */
+	}
+
+	code,
+	pre {
+		font-family: "Courier New", Courier, monospace;
+		font-weight: bold;
+		background: rgba(var(--accent-light), 12%);
+		color: rgb(var(--accent-light));
+		border-radius: 0.25rem;
+		padding: 0.5em;
+	}
+
+	.text-gradient {
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        background-size: 280%;
+        background-position: 0%;
+    }
+	/* Media Queries para manejar el tamaño base de las fuentes dependiendo de la pantalla */
+	@media (max-width: 600px) {
+		html {
+			font-size: 90%;
+		}
+	}
+
+	@media (max-width: 500px) {
+		html {
+			font-size: 80%;
+		}
+	}
+
+	@media (min-width: 1200px) {
+		html {
+			font-size: 112.5%; /* 18px */
+		}
+	}
+</style>

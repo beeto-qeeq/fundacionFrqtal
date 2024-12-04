@@ -1,0 +1,234 @@
+---
+import CarbonFoundation from "@assets/carbon.webp";
+import EpicQueen from "@assets/epicQueen.webp";
+import Quazart from "@assets/quazart.webp";
+import { Image } from "astro:assets";
+
+const PROJECTS_DATA = [
+	{
+		badgeText: "Activo",
+		title: "Carbon Foundation",
+		description: "Tokenización de bonos de carbono",
+		image: CarbonFoundation,
+	},
+	{
+		badgeText: "Activo",
+		title: "Epic Queen",
+		description: "Impulsando a las mujeres en STEM",
+		image: EpicQueen,
+	},
+	{
+		badgeText: "En construcción",
+		title: "Quazart",
+		description: "Almacenamiento limpio de energía eléctrica",
+		image: Quazart,
+	},
+];
+---
+
+<div class="ideas-wrapper">
+    <div class="ideas-side-menu-container">
+        <h2 class="text-gradient">Proyectos</h2>
+        <p>
+            Servimos al mundo mediante una amplia variedad de proyectos que van desde la educación hasta la investigación y el desarrollo en ciencias. Creemos firmemente que el progreso tecnológico es un elemento clave para ayudar a la humanidad a superar sus mayores desafíos. Por ello, nos dedicamos a desarrollar y promover soluciones innovadoras que aborden los problemas críticos que enfrenta la humanidad.
+        </p>
+        <ul class="side-menu-list-container">
+            <li><a href="">Investigación y desarrollo</a></li>
+            <li><a href="">Comunidades vulnerables</a></li>
+            <li><a href="">Clima y medio ambiente</a></li>
+            <li><a href="">Protección animal</a></li>
+            <li><a href="">Educación</a></li>
+        </ul>
+		<div class="action-button-secondary">Ver todos →</div>
+    </div>
+
+    <div class="ideas-projects-container">
+        {
+            PROJECTS_DATA.map((projectData) => {
+                return (
+                    <div class="project-image-card-container">
+                        <Image
+                            class="image-dummie"
+                            src={projectData.image}
+                            alt={projectData.title}
+                        />
+
+                        <div class="project-image-info-container">
+                            <div
+                                class:list={[
+                                    "project-image-badge",
+                                    {
+                                        "active-badge":
+                                            projectData.badgeText === "Activo",
+                                    },
+                                    {
+                                        "construction-badge":
+                                            projectData.badgeText ===
+                                            "En construcción",
+                                    },
+                                ]}
+                            >
+                                <p>
+                                    {projectData.badgeText === "Activo"
+                                        ? "✅"
+                                        : "⚙️"}
+                                </p>
+                                <p>{projectData.badgeText}</p>
+                            </div>
+
+                            <div class="project-texts-container">
+                                <h3>{projectData.title}</h3>
+                                <p class="project-description">
+                                    {projectData.description}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                );
+            })
+        }
+    </div>
+</div>
+
+<style>
+	.action-button-secondary {
+		/* background-color: purple; */
+		padding: 0.4rem 1rem;
+		border-radius: 9999px;
+		width: fit-content;
+		font-weight: var(--font-weight-semi-bold);
+		margin-top: 1.5rem;
+		border: 0.03125rem solid #70698769;
+		background: rgba(0, 0, 0, 0.6);
+		backdrop-filter: blur(1.333rem);
+		-webkit-backdrop-filter: blur(1.333rem);
+		box-shadow:
+			0 8px 16px rgba(0, 0, 0, 0.3),
+			inset 0 0 10px rgba(255, 255, 255, 0.1);
+	}
+	.project-texts-container {
+		display: flex;
+		flex-direction: column;
+		row-gap: 0.3rem;
+		margin-bottom: 0.3rem;
+	}
+	.project-description {
+		font-size: var(--font-size-m);
+	}
+	.active-badge {
+		border: 0.0625rem solid rgb(0, 179, 0);
+		background: rgba(0, 0, 0, 0.6);
+		backdrop-filter: blur(1.333rem);
+		-webkit-backdrop-filter: blur(1.333rem);
+		box-shadow:
+			0 8px 16px rgba(0, 0, 0, 0.3),
+			inset 0 0 10px rgba(0, 179, 0, 0.5);
+	}
+	.construction-badge {
+		border: 0.0625rem solid rgb(210, 236, 8);
+		background: rgba(0, 0, 0, 0.6);
+		backdrop-filter: blur(1.333rem);
+		-webkit-backdrop-filter: blur(1.333rem);
+		box-shadow:
+			0 8px 16px rgba(0, 0, 0, 0.3),
+			inset 0 0 10px rgba(210, 236, 8, 0.5);
+	}
+	.project-image-badge {
+		width: fit-content;
+		display: flex;
+		column-gap: 0.5rem;
+		border-radius: 9999px;
+		font-size: var(--font-size-s);
+		font-weight: var(--font-weight-semi-bold);
+		padding: 0.3rem 0.6rem;
+	}
+	.project-image-card-container {
+		position: relative;
+		border: 0.03125rem solid #70698769;
+		border-radius: 0.8rem;
+		overflow: hidden;
+	}
+	.project-image-card-container::after {
+		/* z-index: -9999; */
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(
+			0deg,
+			rgba(0, 0, 0, 1) 25%,
+			rgba(0, 0, 0, 0) 100%
+		);
+		pointer-events: none;
+	}
+	.project-image-info-container {
+		padding: 0.8rem 1rem;
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		z-index: +999;
+	}
+	.side-menu-list-container {
+		display: flex;
+		flex-direction: column;
+		row-gap: 0.5rem;
+		text-decoration-line: underline;
+		margin-top: 0.2rem;
+		font-size: var(--font-size-m);
+	}
+
+	.ideas-side-menu-container {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		position: sticky;
+		top: 6.8rem;
+		row-gap: 0.7rem;
+		margin-right: 2.8rem;
+	}
+	.image-dummie {
+		width: 100%;
+		max-width: 22rem;
+		aspect-ratio: 0.8/1;
+		object-fit: cover;
+	}
+	.ideas-wrapper {
+		display: flex;
+		grid-template-columns: 0.8fr 1fr;
+		height: fit-content;
+		width: 100%;
+		align-items: flex-start;
+		padding: 3rem 2.8rem;
+		row-gap: 2.3rem;
+	}
+	.ideas-projects-container {
+		flex: 0.8;
+		display: flex;
+		flex-direction: column;
+		row-gap: 2rem;
+		align-items: center;
+	}
+
+	@media (max-width: 920px) {
+		.ideas-wrapper {
+			flex-direction: column;
+		}
+		.ideas-side-menu-container {
+			position: relative;
+			top: unset;
+		}
+		.image-dummie {
+			width: 100%;
+			max-width: 32.5rem;
+		}
+		.ideas-projects-container {
+			width: 100%;
+		}
+	}
+</style>

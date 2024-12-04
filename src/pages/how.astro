@@ -1,0 +1,376 @@
+---
+import { Image } from "astro:assets";
+import CommonLayout from "@layouts/CommonLayout.astro";
+import NotOnlyADonation from "@assets/notOnlyADonation.webp";
+import NavigationHeaderHeader from "@components/NavigationHeader.astro";
+import Footer from "@components/Footer.astro";
+---
+
+<CommonLayout title="Fundación Frqtal - Financiamiento">
+    <main>
+        <NavigationHeaderHeader />
+
+        <div class="nosotros-wrapper">
+            <div class="nosotros-left-container">
+                <h2 class="text-gradient">
+                    ¿De qué manera financiamos nuestros proyectos?
+                </h2>
+            </div>
+            <div class="nosotros-right-texts-container">
+                <p>
+                    Nuestra iniciativa se financia mediante donaciones, tanto en
+                    criptomonedas como a través de aportes tradicionales de
+                    empresas y personas que creen en nuestro proyecto.
+                </p>
+                <p>
+                    Principalmente, utilizamos dos métodos de financiamiento:
+                    por un lado, recibimos donaciones espontáneas a través del
+                    botón de <b class="text-gradient">Donar</b> en nuestra página
+                    web; por otro, realizamos un proceso activo de búsqueda y seguimiento
+                    con empresas y donantes que ya están familiarizados con nuestro
+                    trabajo.
+                </p>
+            </div>
+        </div>
+
+        <div class="manifesto-wrapper">
+            <div class="manifesto-left-container">
+                <h2 class="text-gradient">
+                    ¿Cómo nos acercamos a posibles donantes?
+                </h2>
+            </div>
+            <div class="manifesto-right-texts-container">
+                <p>
+                    Nos acercamos a posibles donantes a través de nuestras redes
+                    sociales oficiales, como Twitter y LinkedIn. Además,
+                    contamos con embajadores que colaboran diariamente en la
+                    creación de alianzas más sólidas. Estos colaboradores están
+                    registrados públicamente en la sección <b
+                        class="text-gradient">Team</b
+                    > de nuestra documentación.
+                </p>
+            </div>
+        </div>
+
+        <div class="manifesto-wrapper">
+            <div class="manifesto-left-container">
+                <h2 class="text-gradient">
+                    ¿Cómo ejecutamos nuestra estrategia?
+                </h2>
+            </div>
+            <div class="manifesto-right-texts-container">
+                <p>
+                    En esta etapa de crecimiento de nuestra iniciativa, la hemos
+                    organizado en diferentes secciones o áreas de trabajo. Cada
+                    una de estas áreas está a cargo de un responsable que se
+                    enfoca en dos aspectos fundamentales: buscar recursos para
+                    su área específica y seleccionar proyectos en los que dichos
+                    recursos puedan invertirse. Además, se encargan de
+                    garantizar que los proyectos actuales continúen creciendo de
+                    manera sostenida.
+                </p>
+            </div>
+        </div>
+
+        <div class="manifesto-wrapper">
+            <div class="manifesto-left-container">
+                <h2 class="text-gradient">¿Cómo medimos los alcances?</h2>
+            </div>
+            <div class="manifesto-right-texts-container">
+                <p>
+                    En nuestra fundación, hemos establecido procesos para medir
+                    los alcances tanto de la organización en su conjunto como de
+                    cada uno de los proyectos que desarrollamos. Realizamos una
+                    evaluación constante de nuestro desempeño, lo que nos
+                    permite identificar áreas de mejora y perseguir la
+                    excelencia en todas nuestras actividades. Cada colaborador
+                    participa activamente en este proceso, contribuyendo a la
+                    mejora continua de nuestras operaciones.
+                </p>
+            </div>
+        </div>
+
+        <div class="manifesto-wrapper">
+            <div class="manifesto-left-container">
+                <h2 class="text-gradient">Es más que una donación</h2>
+            </div>
+            <div class="manifesto-right-texts-container">
+                <p>
+                    Mientras que las organizaciones tradicionales captan
+                    donaciones y las destinan directamente a los proyectos que
+                    realizan, esto genera una necesidad constante de buscar
+                    nuevas contribuciones. En nuestro caso, hemos optado por un
+                    enfoque diferente: el capital recaudado se invierte en
+                    herramientas de inversión y farming para generar
+                    rendimientos, los cuales destinamos a nuestros proyectos.
+                    Esta estrategia nos permite garantizar la sostenibilidad a
+                    largo plazo, ya que preservamos el capital inicial y
+                    utilizamos únicamente los rendimientos generados.
+                </p>
+
+                <Image src={NotOnlyADonation} alt="" />
+            </div>
+        </div>
+
+        <Footer />
+    </main>
+</CommonLayout>
+
+<style>
+    .project-images-container {
+        display: flex;
+        column-gap: 0.7rem;
+    }
+    .project-image-text-container {
+        font-size: var(--font-size-m);
+    }
+    .project-image-small-text-container {
+        font-size: var(--font-size-xs);
+    }
+    .project-image-badge-container {
+        width: fit-content;
+        border: 0.0625rem solid rgb(232, 8, 236);
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(1.333rem);
+        -webkit-backdrop-filter: blur(1.333rem);
+        box-shadow:
+            0 8px 16px rgba(0, 0, 0, 0.3),
+            inset 0 0 10px rgba(232, 8, 236, 0.5);
+        display: flex;
+        column-gap: 0.5rem;
+        font-size: var(--font-size-s);
+        font-weight: var(--font-weight-semi-bold);
+        border-radius: 9999px;
+        padding: 0.3rem 0.6rem;
+    }
+    .project-image-info-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: +999;
+        padding: 1rem 1.2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .project-image-container {
+        position: relative;
+        border: 0.03125rem solid #70698769;
+        border-radius: 0.8rem;
+        overflow: hidden;
+    }
+    .project-image-container::after {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 1) 25%,
+            rgba(0, 0, 0, 0) 100%
+        );
+        pointer-events: none;
+    }
+    .projects-2017-subpublication-texts {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.3rem;
+    }
+    .subpublication-description {
+        font-size: var(--font-size-xs);
+    }
+    .projects-2017-subpublication-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    .subpublication-image {
+        width: 5rem;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: calc(0.8rem / 2);
+    }
+    .projects-2017-subpublication {
+        background-color: white;
+        border-radius: 0.8rem;
+        overflow: hidden;
+        display: flex;
+        color: black;
+        padding: 0.5rem;
+        padding-right: 0.7rem;
+        column-gap: 0.7rem;
+        align-items: center;
+    }
+    .projects-image {
+        object-fit: cover;
+        width: 100%;
+        height: 18rem;
+        border-radius: 0.8rem;
+    }
+    .two-images-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+    }
+    .how-it-starts-image {
+        object-fit: cover;
+
+        border-radius: 0.8rem;
+        border: 0.03125rem solid #70698769;
+        /* align-self: center;
+        justify-self: center; */
+    }
+    .how-it-starts-images-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, min-content);
+        column-gap: 0.8rem;
+        row-gap: 1.2rem;
+    }
+    .image-text-container {
+        padding: 0.5rem 0.3rem;
+        font-size: var(--font-size-xs);
+    }
+    .top-images-container {
+        display: grid;
+        grid-template-columns: 1fr 0.8fr;
+        grid-template-rows: 22rem;
+        border-radius: 0.8rem;
+        border: 0.03125rem solid #70698769;
+        overflow: hidden;
+    }
+    .nosotros-image {
+        object-fit: cover;
+        height: 100%;
+    }
+    .top-images-wrapper {
+        padding: 3rem 2.8rem;
+        padding-top: 6.8rem;
+    }
+    .nosotros-wrapper {
+        display: grid;
+        column-gap: 2.8rem;
+        row-gap: 0.7rem;
+        grid-template-columns: 0.6fr 1fr;
+        padding: 3rem 2.8rem;
+        padding-top: 6.8rem;
+    }
+    .nosotros-left-container {
+        position: sticky;
+        top: 6.8rem;
+        align-self: self-start;
+    }
+    .nosotros-right-texts-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.7rem;
+        font-size: var(--font-size-s);
+    }
+
+    .manifesto-wrapper {
+        display: grid;
+        column-gap: 2.8rem;
+        row-gap: 0.7rem;
+        grid-template-columns: 0.6fr 1fr;
+        padding: 3rem 2.8rem;
+    }
+    .manifesto-left-container {
+        position: sticky;
+        top: 6.8rem;
+        align-self: self-start;
+    }
+    .manifesto-right-texts-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.7rem;
+        font-size: var(--font-size-s);
+    }
+
+    .projects-2017-right-texts-container {
+        margin-top: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.7rem;
+        font-size: var(--font-size-s);
+    }
+    .projects-2017-wrapper {
+        display: grid;
+        column-gap: 2.8rem;
+        row-gap: 0.7rem;
+        grid-template-columns: 0.6fr 1fr;
+        padding: 3rem 2.8rem;
+    }
+    .projects-2017-left-container {
+        position: sticky;
+        top: 6.8rem;
+        align-self: self-start;
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+    }
+    .projects-2017-right-texts-wrapper {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.7rem;
+        font-size: var(--font-size-s);
+    }
+
+    .how-it-starts-wrapper {
+        display: grid;
+        column-gap: 2.8rem;
+        row-gap: 0.7rem;
+        grid-template-columns: 0.6fr 1fr;
+        padding: 3rem 2.8rem;
+    }
+    .how-it-starts-left-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+        position: sticky;
+        top: 6.8rem;
+        align-self: self-start;
+    }
+    .how-it-starts-right-texts-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.7rem;
+        font-size: var(--font-size-s);
+    }
+    @media (max-width: 720px) {
+        .nosotros-wrapper {
+            grid-template-columns: 1fr;
+            grid-template-rows: min-content;
+        }
+        .manifesto-wrapper {
+            grid-template-columns: 1fr;
+            grid-template-rows: min-content;
+        }
+        .projects-2017-wrapper {
+            grid-template-columns: 1fr;
+            grid-template-rows: min-content;
+        }
+        .how-it-starts-wrapper {
+            grid-template-columns: 1fr;
+            grid-template-rows: min-content;
+        }
+        .nosotros-left-container {
+            position: relative;
+            top: 0rem;
+        }
+        .manifesto-left-container {
+            position: relative;
+            top: 0rem;
+        }
+        .projects-2017-left-container {
+            position: relative;
+            top: 0rem;
+        }
+        .how-it-starts-left-container {
+            position: relative;
+            top: 0rem;
+        }
+    }
+</style>
