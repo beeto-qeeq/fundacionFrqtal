@@ -7,18 +7,18 @@ import HamMenu from "@assets/hamMenu.webp";
 <script>
     const MOBILE_MENU = document.getElementById('mobile-menu');
     document.getElementById('mobile-header-button')?.addEventListener('click', () => {
-        MOBILE_MENU.classList.toggle("mobile-menu-show");
+        MOBILE_MENU?.classList.toggle("mobile-menu-show");
 
         const MENU_BUTTONS = document.getElementsByTagName('a');
         for(let i = 0; i < MENU_BUTTONS.length; i++) {
             MENU_BUTTONS[i].addEventListener('click', () => {
-                MOBILE_MENU.classList.toggle("mobile-menu-show");
+                MOBILE_MENU?.classList.toggle("mobile-menu-show");
             });
         }
     })
     window.addEventListener('resize', () => {
         if(window.innerWidth > 640) {
-            MOBILE_MENU.classList.remove("mobile-menu-show");
+            MOBILE_MENU?.classList.remove("mobile-menu-show");
         }
     })
 </script>
