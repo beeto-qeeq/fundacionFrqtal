@@ -78,6 +78,8 @@ import Footer from "@components/Footer.astro";
                     mediante herramientas de farming. Al mismo tiempo, buscamos que
                     cada iniciativa sea autosustentable.
                 </p>
+
+                <a href="https://frqtal.gitbook.io/frqtal-foundation/" ><div class="action-button-secondary">Ver documentacion →</div></a>
             </div>
         </div>
 
@@ -428,14 +430,31 @@ import Footer from "@components/Footer.astro";
                         decisiones mediante votaciones, como una DAO.
                     </p>
                 </div>
+                <a href="https://frqtal.gitbook.io/frqtal-foundation/" ><div class="action-button-secondary">Ver documentacion →</div></a>
             </div>
         </div>
+
 
         <Footer />
     </main>
 </CommonLayout>
 
 <style>
+    .action-button-secondary {
+		/* background-color: purple; */
+		padding: 0.4rem 1rem;
+		border-radius: 9999px;
+		width: fit-content;
+		font-weight: var(--font-weight-semi-bold);
+		margin-top: 1.5rem;
+		border: 0.03125rem solid #70698769;
+		background: rgba(0, 0, 0, 0.6);
+		backdrop-filter: blur(1.333rem);
+		-webkit-backdrop-filter: blur(1.333rem);
+		box-shadow:
+			0 8px 16px rgba(0, 0, 0, 0.3),
+			inset 0 0 10px rgba(255, 255, 255, 0.1);
+	}
     .project-images-container {
         display: flex;
         column-gap: 0.7rem;

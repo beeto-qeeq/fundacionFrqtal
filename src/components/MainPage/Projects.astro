@@ -10,18 +10,21 @@ const PROJECTS_DATA = [
 		title: "Carbon Foundation",
 		description: "Tokenización de bonos de carbono",
 		image: CarbonFoundation,
+		url: 'https://frqtal.gitbook.io/frqtal-foundation/proyectos/carbon-foundation'
 	},
 	{
 		badgeText: "Activo",
 		title: "Epic Queen",
 		description: "Impulsando a las mujeres en STEM",
 		image: EpicQueen,
+		url: 'https://frqtal.gitbook.io/frqtal-foundation/proyectos/epic-qeen'
 	},
 	{
 		badgeText: "En construcción",
 		title: "Quazart",
 		description: "Almacenamiento limpio de energía eléctrica",
 		image: Quazart,
+		url: 'https://frqtal.gitbook.io/frqtal-foundation/proyectos/quazart'
 	},
 ];
 ---
@@ -33,20 +36,20 @@ const PROJECTS_DATA = [
             Servimos al mundo mediante una amplia variedad de proyectos que van desde la educación hasta la investigación y el desarrollo en ciencias. Creemos firmemente que el progreso tecnológico es un elemento clave para ayudar a la humanidad a superar sus mayores desafíos. Por ello, nos dedicamos a desarrollar y promover soluciones innovadoras que aborden los problemas críticos que enfrenta la humanidad.
         </p>
         <ul class="side-menu-list-container">
-            <li><a href="">Investigación y desarrollo</a></li>
-            <li><a href="">Comunidades vulnerables</a></li>
-            <li><a href="">Clima y medio ambiente</a></li>
-            <li><a href="">Protección animal</a></li>
-            <li><a href="">Educación</a></li>
+            <li><a href="https://frqtal.gitbook.io/frqtal-foundation/areas-de-impacto/investigacion-y-desarrollo">Investigación y desarrollo</a></li>
+            <li><a href="https://frqtal.gitbook.io/frqtal-foundation/areas-de-impacto/comunidades-vulnerables">Comunidades vulnerables</a></li>
+            <li><a href="https://frqtal.gitbook.io/frqtal-foundation/areas-de-impacto/clima-y-medio-ambiente">Clima y medio ambiente</a></li>
+            <li><a href="https://frqtal.gitbook.io/frqtal-foundation/areas-de-impacto/proteccion-animal">Protección animal</a></li>
+            <li><a href="https://frqtal.gitbook.io/frqtal-foundation/areas-de-impacto/educacion">Educación</a></li>
         </ul>
-		<div class="action-button-secondary">Ver todos →</div>
+		<a href="https://frqtal.gitbook.io/frqtal-foundation/proyectos" ><div class="action-button-secondary">Ver todos →</div></a>
     </div>
 
     <div class="ideas-projects-container">
         {
             PROJECTS_DATA.map((projectData) => {
                 return (
-                    <div class="project-image-card-container">
+                    <a href={projectData.url} class="project-image-card-container">
                         <Image
                             class="image-dummie"
                             src={projectData.image}
@@ -83,7 +86,7 @@ const PROJECTS_DATA = [
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 );
             })
         }
