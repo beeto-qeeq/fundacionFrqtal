@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "frqtal-foundation",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -7,7 +7,8 @@
     "start": "astro dev  --host",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "cicd": "astro preview --host 0.0.0.0"
   },
   "dependencies": {
     "astro": "^4.16.13",
