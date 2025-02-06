@@ -19,7 +19,7 @@ RUN npm install
 COPY . .
 
 # Construir el proyecto para producción
-# RUN npm run build
+RUN npm run build
 
 # Exponer puerto de Astro para preview
 EXPOSE 4321
