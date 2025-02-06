@@ -1,0 +1,70 @@
+name: frqtal foundation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: deploy-main  # Agrupa los despliegues por rama o contexto
+      cancel-in-progress: true  # Cancela el despliegue en curso si hay un nuevo push
+
+    steps:
+    # Paso 1: Clonar el repositorio de GitHub
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Paso 2: Autenticar con Google Cloud usando google-github-actions/auth@v1
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+    # Paso 3: Configurar Google Cloud SDK
+    - name: Set up Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        install_components: 'kubectl'
+
+    # Paso 4: Autenticar Docker con Google Artifact Registry
+    - name: Authenticate Docker with Artifact Registry
+      run: |
+        gcloud auth configure-docker us-central1-docker.pkg.dev
+
+    # Paso 5: Construir y subir la imagen Docker a Google Artifact Registry
+    - name: Build and push Docker image
+      run: |
+        # Construir la imagen Docker
+        docker build -t frqtal-foundation .
+
+        # Etiquetar la imagen con el ID del commit actual
+        docker tag frqtal-foundation us-central1-docker.pkg.dev/otherverse-hosting/frqtal-foundation/frqtal-foundation:${{ github.sha }}
+
+        # También etiquetar la imagen como 'latest'
+        docker tag frqtal-foundation us-central1-docker.pkg.dev/otherverse-hosting/frqtal-foundation/frqtal-foundation:latest
+
+        # Subir ambas imágenes al registry
+        docker push us-central1-docker.pkg.dev/otherverse-hosting/frqtal-foundation/frqtal-foundation:${{ github.sha }}
+        docker push us-central1-docker.pkg.dev/otherverse-hosting/frqtal-foundation/frqtal-foundation:latest
+
+    # Paso 6: Configurar kubectl para interactuar con GKE
+    - name: Set up kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+        version: 'latest'
+
+    # Paso 7: Actualizar el despliegue en Kubernetes con la imagen del commit actual
+    - name: Update Kubernetes deployment
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+      run: |
+        mkdir -p $HOME/.kube
+        echo "$KUBE_CONFIG_DATA" | base64 -d > $HOME/.kube/config
+
+        # Actualizar el deployment con la imagen etiquetada con el ID del commit actual
+        kubectl set image deployment/frqtal-foundation frqtal-foundation=us-central1-docker.pkg.dev/otherverse-hosting/frqtal-foundation/frqtal-foundation:${{ github.sha }} -n otherverse
+        rm -rf $HOME/.kube
